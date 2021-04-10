@@ -1,0 +1,63 @@
+<div class="coingecko-table table-responsive containerdiv">
+    <table class="table table-scrollable text-sm text-lg-normal" id="gecko-table-all" data-sort-by="">
+        <thead>
+            <tr>
+                <th class="table-number">#</th>
+                <th class="text-left">Image Name</th>
+                <th class="text-left"><span class="d-none d-lg-inline"><span class="translation_missing" title="translation missing: en.coins.th.symbol">Symbol</span></span>
+                </th>
+                <th class="text-right price">
+                    <a id="chart-price-sort" href="#">Current Price</a>
+                </th>
+                <th class="change24h text-right">
+                    <a id="chart-change24h-sort" href="/en/coins/all?sort_by=change24h">High 24hr Price</a>
+                </th>
+                <th class="lit text-right">
+                    <a id="chart-total-volume-sort" href="/en/coins/all?sort_by=total_volume">Low 24hr Price</a>
+                </th>
+            </tr>
+        </thead>
+        <tbody data-target="all-coins.tablebody">
+            <tr *ngFor="let product of products; let i = index">
+                <td class="table-number">
+                    {{i+1}}
+                </td>
+                <td class="tdwith">
+                    <div class="d-flex">
+                        <div class="coin-icon mr-2 center flex-column">
+                            <img alt="{{product.name}} ({{product.symbol}})" [src]="product.image">
+                        </div>
+                        <div class="center">
+                            <a [routerLink]="['/productView', product.id]">
+                                <span class="d-none d-lg-block font-bold">{{product.name}}</span>
+                                <span class="d-lg-none font-bold">{{product.symbol}} </span>
+                            </a>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <span class="d-none d-lg-inline font-normal text-3xs mt-1">{{product.symbol| uppercase}}</span>
+                </td>
+                <td class="td-price price text-right  px-0 pl-2">
+                    <a data-target="currency.currencyLink" href="#">
+                        <span class="no-wrap">{{product.current_price |currency:'EUR'}}</span>
+                    </a>
+                </td>
+                <td class="td-change24h change24h text-right stat-percent px-0 pl-2 ">
+                    <a href="#">
+                        <span class="no-wrap"> {{product.high_24h| currency:'EUR'}}</span>
+                    </a>
+                </td>
+                <td class="td-total_volume lit text-right px-0 pl-2 ">
+                    <a href="#">
+                        <span class="no-wrap">{{product.low_24h |currency:'EUR'}}</span>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="center">
+        <a class="btn btn-primary btn-sm mt-3" (click)="showmore($event)" href="#" *ngIf="showmorehide">Show More</a>
+        <div class="py-3" data-target="all-coins.loading" *ngIf="showmorehideLoading">Loading...</div>
+    </div>
+</div>

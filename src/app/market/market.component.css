@@ -1,0 +1,11 @@
+.containerdiv {
+  font-family: "Droid Sans Mono", Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
+  padding: 5%;
+}
+.tdwith {
+  width: 20%;
+}
+.hideloading {
+  display: none;
+}

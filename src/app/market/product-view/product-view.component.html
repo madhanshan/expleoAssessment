@@ -1,0 +1,37 @@
+<div class="container container-padding">
+    <table class="table tableborder">
+        <tbody>
+            <tr scope="row">
+                <th scope="row" class="border-top-0"><strong>Name</strong></th>
+                <td class="border-top-0"><span class="no-wrap">{{productId | titlecase}}</span></td>
+            </tr>
+            <tr>
+                <th scope="row"><strong>Symbol</strong></th>
+                <td>
+                    <span class="no-wrap">{{productViewDetails.symbol| uppercase}}</span>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row"><strong>Hasing Algorithm</strong></th>
+                <td>
+                    {{productViewDetails.hashing_algorithm}}
+                </td>
+            </tr>
+            <tr>
+                <th scope="row"><strong>Description</strong></th>
+                <td>
+                    <span class="wrap" [innerHTML]="productViewDetails.description?.en"></span>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row"><strong>Genesis Date</strong></th>
+                <td>
+                    <span class="no-wrap">{{productViewDetails.genesis_date |date: 'dd-MMM-yyyy'}}</span>
+                </td>
+        </tbody>
+    </table>
+
+    <div class="center">
+        <a class="btn btn-primary btn-sm mt-3" (click)="goBackPage($event)">Back</a>
+    </div>
+</div>
